@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 13%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 13%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 13%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 13%;
+    --input: 0 0% 13%;
+    --ring: 0 0% 13%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .glow-text {
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  }
+
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+      0 0 20px rgba(255, 255, 255, 0.1),
+      0 0 40px rgba(255, 255, 255, 0.05);
+  }
+
+  .button-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .button-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 0 15px rgba(255, 255, 255, 0.2),
+      0 0 30px rgba(255, 255, 255, 0.1);
+  }
+
+  .testimonials-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .testimonials-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-400px * 2.5));
+    }
+  }
+
+  .testimonials-container {
+    display: flex;
+    width: fit-content;
+    animation: scroll 30s linear infinite;
+  }
+
+  .testimonials-container:hover {
+    animation-play-state: paused;
+  }
+}

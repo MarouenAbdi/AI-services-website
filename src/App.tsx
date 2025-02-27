@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { MessageSquare, Mic, Target, Database, Cpu, BookOpen, Linkedin, ChevronDown, Twitter, Mail } from 'lucide-react';
+import { MessageSquare, Mic, Target, Database, Cpu, BookOpen, Linkedin, Twitter, Mail } from 'lucide-react';
 import { ServiceModal } from './components/ServiceModal';
 import { BlogModal } from './components/BlogModal';
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
+import { SplineHero } from './components/SplineHero';
 
 const services = [
   {
@@ -145,88 +146,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Hero Section */}
-      <div className="relative w-full h-[100vh] overflow-hidden">
-        {/* Background */}
-        <div 
-          className="absolute inset-0 earth-zoom-container"
-          style={{
-            backgroundImage: `
-              linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
-              url("https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80")
-            `,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            filter: 'grayscale(20%) brightness(1.2)'
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/90"></div>
-        </div>
-        
-        {/* Content Container */}
-        <div className="relative h-full flex flex-col">
-          {/* Main Content */}
-          <div className="flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-8">
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="w-full max-w-6xl mx-auto text-center"
-            >
-              <div className="glow-text">
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-100 via-white to-gray-100">
-                  Revolutionize Your Business with AI Automation
-                </h1>
-              </div>
-              <motion.p 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
-                className="text-lg sm:text-xl md:text-2xl mb-8 sm:mb-12 text-gray-200 max-w-3xl mx-auto"
-              >
-                Transforming businesses with intelligent AI solutions: Chat Agents, Voice Assistants, 
-                Lead Generation, and Custom Automation
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-              >
-                <Button 
-                  size="lg"
-                  onClick={() => scrollToSection('contact')}
-                  className="bg-white text-black hover:bg-white/90 text-base sm:text-lg h-12 sm:h-14 px-6 sm:px-8 button-hover"
-                >
-                  Book a Demo
-                </Button>
-              </motion.div>
-            </motion.div>
-          </div>
-
-          {/* Chevron Container */}
-          <div className="relative z-10 flex justify-center">
-            <motion.div
-              animate={{ 
-                y: [0, -10, 0],
-              }}
-              transition={{ 
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => scrollToSection('services')}
-                className="text-white hover:text-white/90"
-              >
-                <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8" />
-              </Button>
-            </motion.div>
-          </div>
-        </div>
-      </div>
+      {/* Hero Section with SplineScene */}
+      <SplineHero onScrollToSection={scrollToSection} />
 
       {/* Services Section */}
       <div id="services" className="container mx-auto px-4 py-32">

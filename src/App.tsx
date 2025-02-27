@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { SplineHero } from './components/SplineHero';
+import { ProcessTimeline } from './components/ProcessTimeline';
 
 const services = [
   {
@@ -189,6 +190,22 @@ function App() {
             </motion.div>
           ))}
         </motion.div>
+      </div>
+
+      {/* Process Section */}
+      <div id="process" className="py-32 bg-card">
+        <div className="container mx-auto px-4">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-7xl font-bold text-center mb-24"
+          >
+            Our Process
+          </motion.h2>
+          <ProcessTimeline />
+        </div>
       </div>
 
       {/* Testimonials Section */}
